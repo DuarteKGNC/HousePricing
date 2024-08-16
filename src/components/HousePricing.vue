@@ -3,7 +3,7 @@
         <h1 class="text-center">House Pricing Predictions</h1>
         <div class="d-flex flex-column gap-1 justify-content-center align-items-center mt-5">
             <div class="w-25">
-                <InputField  v-for="(label, key) in input_labels" :key="key" :id="label.name" :placeholder="label.placeholder" />
+                <InputField  v-for="(label, key) in input_labels" :key="key" :id="label.name" :placeholder="label.placeholder" v-on:changeValue="updateValues" />
                 <div class="mt-3"></div>
                 <ChoiceField v-for="(label, key) in multiple_choice_labels" :key="key" :label="label.name" :options="label.options" />
                 <button class="btn btn-primary w-100 mt-5">Calculate Price</button>
@@ -38,6 +38,11 @@ export default {
                     {name: 'Preferable Area', options: ['Yes', 'No'], value: false},
                     {name: 'Furnishing Dtatus', options: ['furnished', 'semi-furnished', 'unfurnished'], value: 'unfurnished'},
             ],
+        }
+    },
+    methods: {
+        updateValues(x, y){
+            console.log(x, y);
         }
     }
 }

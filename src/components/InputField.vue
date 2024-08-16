@@ -7,6 +7,7 @@
 <script>
 export default {
     name:'InputField',
+    emits: ['changeValue'],
     props: {
         id: String,
         placeholder: String
@@ -16,5 +17,10 @@ export default {
             value: 0
         }
     },
+    watch:{
+        value(){
+            this.$emit("changeValue", this.id, this.value);
+        }
+    }
 }
 </script>
