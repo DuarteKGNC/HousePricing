@@ -1,5 +1,5 @@
 <template>
-    <select class="form-select mb-2">
+    <select class="form-select mb-2" v-model="value">
         <option selected>{{$props.label}}</option>
         <option v-for="(option, index) in $props.options" :key="index" :value="index">{{option}}</option>
     </select>
@@ -10,6 +10,16 @@ export default {
     props: {
         label: String,
         options: Array
+    },
+    data(){
+        return {
+            value: this.label
+        }
+    },
+    watch:{
+        value(){
+            this.$emit("changeValue", this.label, this.value, 'multiple_input')
+        }
     }
 }
 </script>

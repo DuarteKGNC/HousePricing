@@ -19,7 +19,7 @@ export default {
     },
     watch:{
         value(){
-            this.$emit("changeValue", this.id, this.value);
+            this.$emit("changeValue", this.id, this.value, 'single_input');
         }
     }
 }
