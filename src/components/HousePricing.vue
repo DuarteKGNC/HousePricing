@@ -6,7 +6,8 @@
                 <InputField  v-for="(label, key) in input_labels" :key="key" :id="label.name" :placeholder="label.placeholder" v-on:changeValue="updateValues" />
                 <div class="mt-3"></div>
                 <ChoiceField v-for="(label, key) in multiple_choice_labels" :key="key" :label="label.name" :options="label.options" v-on:changeValue="updateValues" />
-                <button class="btn btn-primary w-100 mt-5">Calculate Price</button>
+                <h3>Price: {{ price }}$</h3>
+                <button class="btn btn-primary w-100 mt-2">Calculate Price</button>
             </div>
         </div>
     </div>
@@ -22,6 +23,7 @@ export default {
     },
     data(){
         return{
+            price: 0,
             input_labels: [
                     {name: 'area', placeholder: 'Area of the house in m2', value: 0},
                     {name: 'bedrooms', placeholder: 'Number of bedrooms', value: 0},
