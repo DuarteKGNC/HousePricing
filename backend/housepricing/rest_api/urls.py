@@ -3,5 +3,5 @@ from . import views
 from django.conf import settings
 
 urlpatterns = [
-    path('/predict', views.predict),
+    path('predict/', views.predict),
 ]
