@@ -50,7 +50,6 @@ export default {
             }else{
                 const object = this.multiple_choice_labels.find(label => label.name === name);
                 object.value = object.options[value];
-                console.log(object);
             }
         }
     }
