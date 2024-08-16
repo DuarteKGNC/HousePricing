@@ -1,5 +1,5 @@
 <template>
-    <select class="form-select w-25">
+    <select class="form-select mb-2">
         <option selected>{{$props.label}}</option>
         <option v-for="(option, index) in $props.options" :key="index" :value="index">{{option}}</option>
     </select>
