@@ -41,8 +41,11 @@ export default {
         }
     },
     methods: {
-        updateValues(x, y){
-            console.log(x, y);
+        updateValues(name, value){
+            const object = this.input_labels.find(label => label.name === name);
+            object.value = value;
+            console.log(object)
+            
         }
     }
 }
