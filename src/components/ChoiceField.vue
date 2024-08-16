@@ -17,8 +17,12 @@ export default {
         }
     },
     watch:{
-        value(){
-            this.$emit("changeValue", this.label, this.value, 'multiple_input')
+        value(e){
+            if(typeof e === typeof 1){
+                this.$emit("changeValue", this.label, this.value, 'multiple_input');
+            }else{
+                return false;
+            }
         }
     }
 }
