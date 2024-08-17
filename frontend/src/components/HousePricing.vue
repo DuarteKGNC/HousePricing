@@ -7,7 +7,7 @@
                 <div class="mt-3"></div>
                 <ChoiceField v-for="(label, key) in multiple_choice_labels" :key="key" :label="label.name" :options="label.options" v-on:changeValue="updateValues" />
                 <h3>Price: {{ price }}$</h3>
-                <button class="btn btn-primary w-100 mt-2">Calculate Price</button>
+                <button @click="callPrediction" class="btn btn-primary w-100 mt-2">Calculate Price</button>
             </div>
         </div>
     </div>
@@ -15,6 +15,7 @@
 <script>
 import InputField from './InputField.vue';
 import ChoiceField from './ChoiceField.vue';
+import { make_prediction } from '../scripts/calls.js';
 export default {
     name: 'HousePricing',
     components: {
@@ -51,6 +52,31 @@ export default {
                 const object = this.multiple_choice_labels.find(label => label.name === name);
                 object.value = object.options[value];
             }
+        },
+        callPrediction(){
+            let single_data = []
+            let multiple_data = []
+            const Mkey = 'value';
+
+            this.input_labels.forEach(e => {
+                single_data.push(e[Mkey]);
+            })
+
+            this.multiple_choice_labels.forEach(e => {
+                let int_data = 0;
+                if(e[Mkey] === 'Yes'){ // convert bool values to int
+                    int_data = 1;
+                } else if(e[Mkey] === 'furnished'){ // convert str values to int
+                    int_data = 2;
+                } else if(e[Mkey] === 'semi-furnished'){
+                    int_data = 1
+                }
+                multiple_data.push(int_data)
+            })
+            
+            const data = single_data.concat(multiple_data)
+
+            make_prediction(data)
         }
     }
 }
