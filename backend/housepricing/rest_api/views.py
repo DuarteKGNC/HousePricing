@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .predictions.main import start
+from .LRegression.main import start
 
 
 @api_view(['GET'])
