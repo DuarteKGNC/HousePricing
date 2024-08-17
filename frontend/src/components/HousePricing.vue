@@ -53,7 +53,7 @@ export default {
                 object.value = object.options[value];
             }
         },
-        callPrediction(){
+        async callPrediction(){
             let single_data = []
             let multiple_data = []
             const Mkey = 'value';
@@ -76,7 +76,7 @@ export default {
             
             const data = single_data.concat(multiple_data)
 
-            make_prediction(data)
+            this.price = await make_prediction(data)
         }
     }
 }
